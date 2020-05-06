@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Test.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Dotor&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">TestPackage</a> &gt; <span class="el_source">Test.java</span></div><h1>Test.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package TestPackage;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Scanner;
+import modal.Doctor;
+import modal.DoctorManagement;
+import modal.Validater;
+
+/**
+ *
+ * @author dell
+ */
+public class Test {
+<span class="fc" id="L23">    ArrayList&lt;Doctor&gt; lst = new ArrayList&lt;Doctor&gt;();</span>
+<span class="fc" id="L24">    public Test() {</span>
+<span class="fc" id="L25">        lst.add(new Doctor(1, &quot;huy&quot;, &quot;14/16/1999&quot;, &quot;1&quot;, 0, &quot;1@g.com&quot;, &quot;(123)-456-7890&quot;));</span>
+<span class="fc" id="L26">        lst.add(new Doctor(2, &quot;hai&quot;, &quot;11/12/1221&quot;, &quot;1&quot;, 0, &quot;1@g.com&quot;, &quot;(123)-456-7890&quot;));</span>
+<span class="fc" id="L27">        lst.add(new Doctor(3, &quot;hoang&quot;, &quot;12/11/1221&quot;, &quot;1&quot;, 0, &quot;1@g.com&quot;, &quot;(123)-456-7890&quot;));</span>
+<span class="fc" id="L28">        lst.add(new Doctor(4, &quot;thuy&quot;, &quot;12/12/1999&quot;, &quot;1&quot;, 0, &quot;1@g.com&quot;, &quot;(123)-456-7890&quot;));</span>
+<span class="fc" id="L29">    }</span>
+    
+     
+    public Doctor add(String name, String DOB, String Spec, int avai, String email, String number) {
+<span class="fc" id="L33">        int id = 0;</span>
+<span class="fc" id="L34">        int length = lst.size();</span>
+      
+<span class="fc" id="L36">            id = lst.get(length - 1).getID() + 1;</span>
+        
+
+<span class="fc" id="L39">     lst.add(new Doctor(id, name, DOB, Spec, avai, email, number));</span>
+     
+<span class="fc" id="L41">     return lst.get(lst.size() - 1);</span>
+    }
+
+    public int getIndex(int id) {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for (int i = 0; i &lt; lst.size(); i++) {</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">            if (lst.get(i).getID() == id) {</span>
+<span class="fc" id="L47">                return i;</span>
+            }
+        }
+<span class="fc" id="L50">        return -1;</span>
+    }
+
+    public Doctor update(int id,int index,String name,String Dob,String spec,int vail,String email,String mobile ,String y ) {
+<span class="fc" id="L54">        Test t = new Test();</span>
+<span class="fc" id="L55">        Validater vl = new Validater();</span>
+<span class="fc" id="L56">        index = t.getIndex(id);</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if(index!=-1){</span>
+<span class="fc" id="L58">        System.out.println(&quot;Do you want edit name: &quot;);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (t.checkYOrN(y)) {</span>
+            
+<span class="fc" id="L61">            lst.get(index).setName(name);</span>
+        }
+<span class="fc" id="L63">        System.out.println(&quot;Do you want edit Date of birth: &quot;);</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (t.checkYOrN(y)) {</span>
+     
+<span class="fc" id="L66">            lst.get(index).setDOB(Dob);</span>
+        }
+<span class="fc" id="L68">        System.out.println(&quot;Do you want edit specialization: &quot;);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (t.checkYOrN(y)) {</span>
+
+<span class="fc" id="L71">            lst.get(index).setSpec(spec);</span>
+        }
+<span class="fc" id="L73">        System.out.println(&quot;Do you want edit availability: &quot;);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (t.checkYOrN(y)) {</span>
+
+<span class="fc" id="L76">            lst.get(index).setAvai(vail);</span>
+        }
+<span class="fc" id="L78">        System.out.println(&quot;Do you want edit email: &quot;);</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        if (t.checkYOrN(y)) {</span>
+
+<span class="fc" id="L81">            lst.get(index).setEmail(email);</span>
+        }
+<span class="fc" id="L83">        System.out.println(&quot;Do you want edit Phonenumber: &quot;);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">        if (t.checkYOrN(y)) {</span>
+
+<span class="fc" id="L86">            lst.get(index).setNumber(mobile);</span>
+        }
+<span class="fc" id="L88">        return lst.get(index);</span>
+        }
+<span class="fc" id="L90">        return null;</span>
+    }
+
+    public ArrayList&lt;Doctor&gt; sort() {
+
+<span class="fc" id="L95">        Comparator&lt;Doctor&gt; DOB = (o1, o2) -&gt; {</span>
+<span class="fc" id="L96">            return o1.getDOB().compareTo(o2.getDOB());</span>
+
+        };
+
+<span class="fc" id="L100">        Collections.sort(lst, DOB);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        for (int i = 0; i &lt; lst.size(); i++) {</span>
+<span class="fc" id="L102">            System.out.println(lst.get(i).toString());</span>
+        }
+<span class="fc" id="L104">        return lst;</span>
+    }
+
+    public boolean delete(int id) {
+<span class="fc bfc" id="L108" title="All 2 branches covered.">        for (int i = 0; i &lt; lst.size(); i++) {</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">            if (lst.get(i).getID() == id) {</span>
+<span class="fc" id="L110">                lst.remove(i);</span>
+<span class="fc" id="L111">                return true;</span>
+            }
+        }
+<span class="fc" id="L114">        return false;</span>
+    }
+
+    public int search(String input) {
+<span class="fc" id="L118">        System.out.println(&quot;ID\tName\tDateOfBirth\tSpec\tAvai\tEmail\tMobile&quot;);</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        for (int i = 0; i &lt; lst.size(); i++) {</span>
+<span class="fc bfc" id="L120" title="All 4 branches covered.">            if (lst.get(i).getName().contains(input) || String.valueOf(lst.get(i).getID()).equals(input)) {</span>
+<span class="fc" id="L121">                System.out.println(lst.get(i).toString());</span>
+<span class="fc" id="L122">                return 1;</span>
+            }
+
+        }
+<span class="fc" id="L126">        return -1;</span>
+    }
+<span class="fc" id="L128"> Scanner sc = new Scanner(System.in);</span>
+
+    public String input(String name,int val) {
+          
+<span class="fc bfc" id="L132" title="All 2 branches covered.">                if (name.length() &lt; val) {</span>
+<span class="fc" id="L133">                    return &quot;1&quot;;</span>
+                }
+<span class="fc" id="L135">        return &quot;-1&quot;;</span>
+    }
+
+    public int choice(String input, int min, int max) {
+
+
+            try {
+<span class="fc" id="L142">                 int choice = Integer.parseInt(input);</span>
+<span class="pc bpc" id="L143" title="1 of 4 branches missed.">                if (choice&lt;= max &amp;&amp; choice &gt;= min) {</span>
+<span class="fc" id="L144">                    return choice;</span>
+                }
+<span class="fc" id="L146">                return -1;</span>
+<span class="fc" id="L147">            } catch (NumberFormatException e) {</span>
+<span class="fc" id="L148">               return -2;</span>
+            }
+        
+            
+        
+    }
+
+    public String getDates(String input) {
+<span class="fc" id="L156">        Scanner sc = new Scanner(System.in);</span>
+<span class="fc" id="L157">        SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;dd-MM-yyyy&quot;);</span>
+<span class="fc" id="L158">        dateFormat.setLenient(false);</span>
+        Date date;
+            try {
+<span class="fc" id="L161">                System.out.print(&quot;Enter date: &quot;);</span>
+<span class="fc" id="L162">                date = dateFormat.parse(input);</span>
+<span class="fc" id="L163">                String d= dateFormat.format(date);</span>
+<span class="fc" id="L164">                return d;</span>
+<span class="fc" id="L165">            } catch (Exception e) {</span>
+<span class="fc" id="L166">               return &quot;-1&quot;;</span>
+            }
+    }
+
+    public boolean isValid(String email) {
+<span class="fc" id="L171">        String regex = &quot;^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$&quot;;</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">        if(email.matches(regex)){</span>
+<span class="fc" id="L173">            return true;</span>
+        }
+<span class="fc" id="L175">        return false;</span>
+    }
+
+    public String checkMail(String input) {
+
+        while (true) {
+
+<span class="fc" id="L182">                 String mail = input;</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">                if (isValid(mail)) {</span>
+<span class="fc" id="L184">                    return mail;</span>
+                }
+<span class="fc" id="L186">                return &quot;-1&quot;;</span>
+           
+        }
+    }
+    
+
+    public String checkMoblie(String input1) {           
+ 
+<span class="fc" id="L194">               String moblie = input1;</span>
+            try {
+<span class="fc bfc" id="L196" title="All 4 branches covered.">                if (moblie.length() != 10 &amp;&amp; moblie.matches(&quot;[0-9]+&quot;)) {</span>
+<span class="fc" id="L197">                    return &quot;-1&quot;;</span>
+                
+                }
+<span class="fc" id="L200">                String input = moblie;</span>
+<span class="fc" id="L201">                String output = &quot;(&quot; + input.substring(0, 3) + &quot;)&quot; + &quot;-&quot; + input.substring(3, 6) + &quot;-&quot; + input.substring(6, 10);</span>
+<span class="fc" id="L202">                return output;</span>
+<span class="fc" id="L203">            } catch (Exception e) {</span>
+<span class="fc" id="L204">               return &quot;-2&quot;;</span>
+            }
+        
+    }
+
+    public boolean checkYOrN(String input) {
+<span class="fc" id="L210">        String s = &quot;&quot;;</span>
+        while (true) {
+<span class="fc" id="L212">            s = input;</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">            if (s.toUpperCase().matches(&quot;[Y|N]&quot;)) {</span>
+<span class="fc" id="L214">                return s.toUpperCase().equals(&quot;Y&quot;);</span>
+            } else {
+<span class="fc" id="L216">               return false;</span>
+            }
+        }
+    }
+      
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
